@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)file:///Users/ahava101/Downloads/serene-escape%20(1).html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serene Escape — Mindfulness Walks at Northeastern</title>
+<link href="./Serene Escape — Mindfulness Walks at Northeastern_files/css2" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sage: #5DCAA5;
+    --sage-light: #E1F5EE;
+    --sage-dark: #085041;
+    --forest: #1D9E75;
+    --honey: #FAEEDA;
+    --blush: #F5C4B3;
+    --stone: #6B6B63;
+    --ink: #1a1f1c;
+    --cream: #F7F4EE;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(247,244,238,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgba(93,202,165,0.2);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--sage-dark);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--stone);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--forest); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 80%, rgba(93,202,165,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 20%, rgba(245,196,179,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 60% 70%, rgba(250,238,218,0.3) 0%, transparent 60%),
+      var(--cream);
+  }
+
+  /* Floating leaves */
+  .leaf {
+    position: absolute;
+    opacity: 0.12;
+    animation: drift linear infinite;
+  }
+  @keyframes drift {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-100vh) rotate(360deg); }
+  }
+
+  .hero-eyebrow {
+    position: relative; z-index: 1;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    position: relative; z-index: 1;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--forest);
+  }
+
+  .hero-sub {
+    position: relative; z-index: 1;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--stone);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-cta {
+    position: relative; z-index: 1;
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .btn-primary {
+    padding: 0.9rem 2.2rem;
+    background: var(--sage-dark);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.03em;
+  }
+  .btn-primary:hover { background: var(--forest); transform: translateY(-2px); }
+
+  .btn-outline {
+    padding: 0.9rem 2.2rem;
+    background: transparent;
+    color: var(--sage-dark);
+    border: 1px solid var(--sage);
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.03em;
+  }
+  .btn-outline:hover { background: var(--sage-light); transform: translateY(-2px); }
+
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    z-index: 1;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.2s;
+  }
+  .scroll-hint span {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--stone); opacity: 0.6;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--sage), transparent);
+    animation: scrollLine 1.5s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* PHOTO COLLAGE */
+  .collage-section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-body {
+    font-size: 1rem; font-weight: 300;
+    color: var(--stone); line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 3rem;
+  }
+
+  .collage-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 260px 260px;
+    gap: 12px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .collage-item {
+    position: relative;
+    overflow: hidden;
+    background: var(--sage-light);
+    cursor: pointer;
+  }
+  .collage-item:first-child { grid-row: 1 / 3; }
+  .collage-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+  }
+  .collage-item:hover img { transform: scale(1.05); }
+  .collage-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px;
+    color: var(--sage-dark);
+    font-size: 0.8rem; letter-spacing: 0.05em;
+    opacity: 0.5;
+  }
+
+  /* WHY SECTION */
+  .why-section {
+    background: var(--sage-dark);
+    color: white;
+    padding: 6rem 2rem;
+  }
+  .why-inner { max-width: 1100px; margin: 0 auto; }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .why-label { color: var(--sage); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .why-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+  .why-title em { font-style: italic; color: var(--sage); }
+  .why-body { font-size: 0.95rem; font-weight: 300; line-height: 1.9; color: rgba(255,255,255,0.7); margin-bottom: 2rem; }
+
+  .benefits-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .benefit {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding: 1.2rem 1.5rem;
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(93,202,165,0.2);
+    border-radius: 14px;
+  }
+  .benefit-dot {
+    width: 8px; height: 8px;
+    background: var(--sage);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .benefit-title { font-size: 0.95rem; font-weight: 500; margin-bottom: 4px; }
+  .benefit-desc { font-size: 0.85rem; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* WALKS SCHEDULE */
+  .walks-section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .walks-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+  }
+  .walk-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+  .walk-card {
+    background: white;
+    border: 0.5px solid rgba(0,0,0,0.08);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .walk-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+  .walk-card-img {
+    height: 160px;
+    background: linear-gradient(135deg, var(--sage-light), var(--honey));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+  }
+  .walk-card-body { padding: 1.2rem 1.4rem; }
+  .walk-tag {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--forest);
+    background: var(--sage-light);
+    padding: 3px 10px; border-radius: 20px;
+    margin-bottom: 0.75rem;
+  }
+  .walk-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 0.4rem; }
+  .walk-meta { font-size: 0.82rem; color: var(--stone); margin-bottom: 0.6rem; }
+  .walk-desc { font-size: 0.85rem; font-weight: 300; color: var(--stone); line-height: 1.6; margin-bottom: 1rem; }
+  .walk-rsvp {
+    font-size: 0.82rem; font-weight: 500; color: var(--forest);
+    text-decoration: none; letter-spacing: 0.03em;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .walk-rsvp:hover { color: var(--sage-dark); }
+
+  /* COMMUNITY WALL */
+  .community-section {
+    background: var(--honey);
+    padding: 6rem 2rem;
+  }
+  .community-inner { max-width: 1100px; margin: 0 auto; }
+  .community-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 3rem;
+  }
+  .community-photo {
+    aspect-ratio: 1;
+    background: var(--sage-light);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .community-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .community-photo:hover img { transform: scale(1.06); }
+  .community-photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 6px; color: var(--sage-dark); opacity: 0.4;
+    font-size: 0.75rem;
+  }
+  .community-overlay {
+    position: absolute; inset: 0;
+    background: rgba(8,80,65,0.5);
+    display: flex; align-items: flex-end;
+    padding: 12px;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .community-photo:hover .community-overlay { opacity: 1; }
+  .community-overlay span { font-size: 0.75rem; color: white; font-weight: 400; }
+
+  /* SUBMIT FORM */
+  .submit-section {
+    padding: 6rem 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .submit-box {
+    background: white;
+    border: 0.5px solid rgba(0,0,0,0.08);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    margin-top: 2rem;
+  }
+  .form-group { margin-bottom: 1.2rem; text-align: left; }
+  .form-group label {
+    display: block;
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--stone);
+    margin-bottom: 0.4rem;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 0.5px solid rgba(0,0,0,0.15);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--sage); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .upload-box {
+    border: 1px dashed var(--sage);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s;
+    background: var(--sage-light);
+  }
+  .upload-box:hover { background: #c8eee0; }
+  .upload-box p { font-size: 0.85rem; color: var(--forest); margin-top: 0.4rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; color: white;
+    margin-bottom: 0.5rem;
+  }
+  footer p { font-size: 0.82rem; line-height: 1.8; }
+  .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin: 1rem 0; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--sage); }
+
+  /* Decorative */
+  .divider-leaf {
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 0.25;
+    padding: 1rem 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#" class="nav-logo">Serene Escape</a>
+  <ul class="nav-links">
+    <li><a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#why">Why it works</a></li>
+    <li><a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#walks">Upcoming walks</a></li>
+    <li><a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#community">Community</a></li>
+    <li><a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#submit">Share your moment</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Floating leaf SVGs -->
+  <svg class="leaf" style="left:8%; top:70%; width:60px; animation-duration:18s; animation-delay:-5s;" viewBox="0 0 60 80"><path d="M30 5 C50 20 55 50 30 75 C5 50 10 20 30 5Z" fill="#5DCAA5"></path></svg>
+  <svg class="leaf" style="left:80%; top:80%; width:40px; animation-duration:22s; animation-delay:-10s;" viewBox="0 0 60 80"><path d="M30 5 C50 20 55 50 30 75 C5 50 10 20 30 5Z" fill="#1D9E75"></path></svg>
+  <svg class="leaf" style="left:60%; top:60%; width:30px; animation-duration:15s; animation-delay:-2s;" viewBox="0 0 60 80"><path d="M30 5 C50 20 55 50 30 75 C5 50 10 20 30 5Z" fill="#F5C4B3"></path></svg>
+
+  <p class="hero-eyebrow">Northeastern University · Serene Escape Club</p>
+  <h1 class="hero-title">Step outside.<br>Clear your <em>mind.</em></h1>
+  <p class="hero-sub">Weekly mindfulness walks through nature — because sometimes the most radical thing you can do is slow down and breathe.</p>
+  <div class="hero-cta">
+    <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#walks" class="btn-primary">Join a walk</a>
+    <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#why" class="btn-outline">Why it works</a>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- PHOTO COLLAGE -->
+<section class="collage-section" id="gallery">
+  <p class="section-label">Our moments</p>
+  <h2 class="section-title">Beauty is everywhere,<br>if you stop to look.</h2>
+  <p class="section-body">A living gallery of what our community notices on walks — dew on grass, light through trees, a quiet path.</p>
+
+  <div class="collage-grid">
+    <div class="collage-item">
+      <!-- Replace src with real image -->
+      <div class="collage-placeholder">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="17" stroke="#5DCAA5" stroke-width="1"></circle><path d="M10 24 L14 18 L18 22 L22 16 L26 24" stroke="#5DCAA5" stroke-width="1.5" fill="none" stroke-linecap="round"></path><circle cx="14" cy="13" r="3" stroke="#5DCAA5" stroke-width="1"></circle></svg>
+        <span>Add your photo here</span>
+      </div>
+    </div>
+    <div class="collage-item">
+      <div class="collage-placeholder">
+        <svg width="28" height="28" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="17" stroke="#5DCAA5" stroke-width="1"></circle><path d="M10 24 L14 18 L18 22 L22 16 L26 24" stroke="#5DCAA5" stroke-width="1.5" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+    </div>
+    <div class="collage-item">
+      <div class="collage-placeholder">
+        <svg width="28" height="28" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="17" stroke="#5DCAA5" stroke-width="1"></circle><path d="M10 24 L14 18 L18 22 L22 16 L26 24" stroke="#5DCAA5" stroke-width="1.5" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+    </div>
+    <div class="collage-item">
+      <div class="collage-placeholder">
+        <svg width="28" height="28" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="17" stroke="#5DCAA5" stroke-width="1"></circle><path d="M10 24 L14 18 L18 22 L22 16 L26 24" stroke="#5DCAA5" stroke-width="1.5" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+    </div>
+    <div class="collage-item">
+      <div class="collage-placeholder">
+        <svg width="28" height="28" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="17" stroke="#5DCAA5" stroke-width="1"></circle><path d="M10 24 L14 18 L18 22 L22 16 L26 24" stroke="#5DCAA5" stroke-width="1.5" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY IT WORKS -->
+<section class="why-section" id="why">
+  <div class="why-inner">
+    <div class="why-grid">
+      <div>
+        <p class="why-label">The science</p>
+        <h2 class="why-title">Your brain on <em>nature.</em></h2>
+        <p class="why-body">
+          Research from environmental psychology shows that even 20 minutes in a natural setting measurably lowers cortisol — your body's primary stress hormone. When you mindfully observe nature — the texture of grass, the sound of wind, light filtering through leaves — your nervous system shifts from "fight or flight" into rest mode.
+        </p>
+        <p class="why-body">
+          This isn't just going for a walk. It's intentional presence. And it changes things.
+        </p>
+        <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#walks" class="btn-primary" style="display:inline-block;">Find a walk near you →</a>
+      </div>
+      <div class="benefits-list">
+        <div class="benefit">
+          <div class="benefit-dot"></div>
+          <div>
+            <div class="benefit-title">Reduces anxiety &amp; stress</div>
+            <div class="benefit-desc">Nature exposure lowers cortisol and activates the parasympathetic nervous system — your body's natural calm response.</div>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-dot"></div>
+          <div>
+            <div class="benefit-title">Improves focus &amp; clarity</div>
+            <div class="benefit-desc">Attention Restoration Theory shows green spaces restore mental bandwidth — especially after screen-heavy days.</div>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-dot"></div>
+          <div>
+            <div class="benefit-title">Boosts mood naturally</div>
+            <div class="benefit-desc">Even brief exposure to grass, trees, or water increases serotonin and dopamine without any screens or substances.</div>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-dot"></div>
+          <div>
+            <div class="benefit-title">Builds community &amp; belonging</div>
+            <div class="benefit-desc">Sharing slow, mindful time with others creates genuine connection — the kind college often makes hard to find.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UPCOMING WALKS -->
+<section class="walks-section" id="walks">
+  <div class="walks-header">
+    <div>
+      <p class="section-label">What's coming up</p>
+      <h2 class="section-title">Upcoming walks</h2>
+    </div>
+    <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#submit" class="btn-outline">Suggest a spot →</a>
+  </div>
+  <div class="walk-cards">
+    <div class="walk-card">
+      <div class="walk-card-img">🌿</div>
+      <div class="walk-card-body">
+        <span class="walk-tag">Every Sunday</span>
+        <h3 class="walk-name">Sunday Soul Walk</h3>
+        <p class="walk-meta">📍 Centennial Common · 10:00 AM</p>
+        <p class="walk-desc">A gentle 45-minute mindful walk with grounding exercises, breathwork, and journaling at the end.</p>
+        <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#" class="walk-rsvp">RSVP → <span>8 spots left</span></a>
+      </div>
+    </div>
+    <div class="walk-card">
+      <div class="walk-card-img">🍂</div>
+      <div class="walk-card-body">
+        <span class="walk-tag">Saturday April 19</span>
+        <h3 class="walk-name">Forest Bathing in the Fens</h3>
+        <p class="walk-meta">📍 Back Bay Fens · 9:00 AM</p>
+        <p class="walk-desc">Inspired by Japanese Shinrin-yoku — slow walking, sensory awareness, and collective silence in the trees.</p>
+        <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#" class="walk-rsvp">RSVP →</a>
+      </div>
+    </div>
+    <div class="walk-card">
+      <div class="walk-card-img">🌅</div>
+      <div class="walk-card-body">
+        <span class="walk-tag">Friday April 25</span>
+        <h3 class="walk-name">Sunrise + Stretch</h3>
+        <p class="walk-meta">📍 Krentzman Quad · 7:00 AM</p>
+        <p class="walk-desc">Start your day with outdoor yoga, a short nature walk, and a smoothie made together after.</p>
+        <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#" class="walk-rsvp">RSVP →</a>
+      </div>
+    </div>
+    <div class="walk-card">
+      <div class="walk-card-img">🌙</div>
+      <div class="walk-card-body">
+        <span class="walk-tag">Monthly</span>
+        <h3 class="walk-name">Moonlight Meditation Walk</h3>
+        <p class="walk-meta">📍 Charles River Esplanade · 8:00 PM</p>
+        <p class="walk-desc">An evening walk by the river with guided meditation, stargazing, and cozy post-walk hot drinks.</p>
+        <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#" class="walk-rsvp">Join waitlist →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY WALL -->
+<section class="community-section" id="community">
+  <div class="community-inner">
+    <p class="section-label">Made by our community</p>
+    <h2 class="section-title" style="margin-bottom:0.5rem;">Your nature, your eye.</h2>
+    <p class="section-body" style="margin-bottom:2.5rem;">These photos were taken by members on walks — moments of ordinary beauty they stopped to notice.</p>
+
+    <div class="community-grid">
+      <!-- Placeholder tiles — replace with real submitted photos -->
+      <div class="community-photo"><div class="community-photo-placeholder">🌿<span>Member photo</span></div></div>
+      <div class="community-photo"><div class="community-photo-placeholder">🍃<span>Member photo</span></div></div>
+      <div class="community-photo"><div class="community-photo-placeholder">🌸<span>Member photo</span></div></div>
+      <div class="community-photo"><div class="community-photo-placeholder">🌾<span>Member photo</span></div></div>
+      <div class="community-photo"><div class="community-photo-placeholder">🌊<span>Member photo</span></div></div>
+      <div class="community-photo"><div class="community-photo-placeholder">🦋<span>Member photo</span></div></div>
+      <div class="community-photo"><div class="community-photo-placeholder">🌻<span>Member photo</span></div></div>
+      <div class="community-photo"><div class="community-photo-placeholder">🍂<span>Member photo</span></div></div>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#submit" class="btn-primary">Add your photo to the wall →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SUBMIT / CONTRIBUTE -->
+<section class="submit-section" id="submit">
+  <p class="section-label">Contribute</p>
+  <h2 class="section-title">Share your moment</h2>
+  <p class="section-body" style="margin: 0 auto 0; text-align:center;">
+    Saw something beautiful on a walk? Submit a photo, video, or walk suggestion — this community space belongs to all of us.
+  </p>
+  <div class="submit-box">
+    <div class="form-group">
+      <label>Your name</label>
+      <input type="text" placeholder="First name is fine">
+    </div>
+    <div class="form-group">
+      <label>What are you sharing?</label>
+      <select>
+        <option>A photo from a walk</option>
+        <option>A short video / nature clip</option>
+        <option>A walk spot suggestion</option>
+        <option>A reflection or journal entry</option>
+        <option>Something else</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Upload your photo or video</label>
+      <div class="upload-box">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 4 L16 22M8 12 L16 4 L24 12" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 26 L28 26" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"></path></svg>
+        <p>Click to upload or drag and drop</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Caption or note (optional)</label>
+      <textarea placeholder="Where was this? What made you stop and notice it?"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Walk suggestion (if applicable)</label>
+      <input type="text" placeholder="e.g. The path behind Ruggles Station">
+    </div>
+    <button class="btn-primary" style="width:100%; padding:1rem; font-size:1rem;" onclick="alert(&#39;Thank you for contributing to Serene Escape 🌿&#39;)">Submit your moment</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Serene Escape</div>
+  <p>A mindfulness community at Northeastern University<br>Every Sunday · Every season · Every version of you</p>
+  <div class="footer-links">
+    <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#gallery">Gallery</a>
+    <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#why">Why it works</a>
+    <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#walks">Walks</a>
+    <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#community">Community</a>
+    <a href="file:///Users/ahava101/Downloads/serene-escape%20(1).html#submit">Contribute</a>
+  </div>
+  <p style="margin-top:1.5rem; font-size:0.75rem;">© 2026 Serene Escape at Northeastern · Made with intention 🌿</p>
+</footer>
+
+
+
+</body></html>
